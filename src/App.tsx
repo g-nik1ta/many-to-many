@@ -1,12 +1,14 @@
 import "./styles/main.css";
 import Header from "./components/Header/Header";
-import ItemsList from "./components/ItemsList/ItemsList";
+import FoodList from "./components/FoodList/FoodList";
 
 const App = () => {
     return (
-        <div>
+        <div className="app">
             <Header />
-            <ItemsList />
+            <main>
+                <FoodList />
+            </main>
         </div>
     );
 };

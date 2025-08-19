@@ -1,10 +1,12 @@
 import "./Header.scss";
-import refresh_button from "../../assets/refresh_button.svg"
+import refresh_button from "../../assets/refresh_button.svg";
 
 const Header = () => {
     return (
         <header>
-            <img src={refresh_button} alt="Refresh button" className="refresh_btn" />
+            <div className="refresh_btn">
+                <img src={refresh_button} alt="Refresh button" />
+            </div>
         </header>
     );
 };
