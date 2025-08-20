@@ -1,4 +1,4 @@
-import { FoodCategory, ItemDetail } from "../types/item";
+import { FoodCategory, FoodDetail } from "../types/item";
 import { api } from "./index";
 
 function wait() {
@@ -12,7 +12,7 @@ export const getRandomFoods = async (): Promise<FoodCategory> => {
     return data;
 };
 
-export const getFoodById = async (id: number): Promise<ItemDetail> => {
-    const { data } = await api.get<ItemDetail>(`/texts/${id}`);
+export const getFoodById = async (id: string): Promise<FoodDetail> => {
+    const { data } = await api.get<FoodDetail>(`/texts/${id}`);
     return data;
 };

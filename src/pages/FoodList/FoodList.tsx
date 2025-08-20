@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import "./FoodList.scss";
-import ULoader from "../UComponents/ULoader/ULoader";
+import ULoader from "../../components/UComponents/ULoader/ULoader";
 import { useFood } from "../../context/FoodContext";
 import { useFoodsApi } from "../../hooks/useFoodsApi";
-import FoodItem from "../FoodItem/FoodItem";
+import FoodItem from "../../components/FoodItem/FoodItem";
 
 const FoodList = () => {
     const { loading, foods } = useFood();
@@ -27,7 +27,7 @@ const FoodList = () => {
                     <FoodItem key={item.id} item={item} />
                 ))
             ) : (
-                <p className="no-data">No data available</p>
+                <p className="no-data">No data available.</p>
             )}
         </section>
     );

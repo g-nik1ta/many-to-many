@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./FoodItem.scss";
 import { Food } from "../../types/item";
+import { Link } from "react-router";
 
 interface FoodItemProps {
     item: Food;
@@ -16,7 +17,7 @@ const FoodItem: React.FC<FoodItemProps> = ({ item }) => {
     }, []);
 
     return (
-        <div
+        <Link to={`/food/${item.id}`}
             className={`food-item ${visible ? "visible" : ""}`}
             style={{ backgroundColor: `#${item.color}` }}
         >
@@ -33,7 +34,7 @@ const FoodItem: React.FC<FoodItemProps> = ({ item }) => {
                     />
                 </>
             )}
-        </div>
+        </Link>
     );
 };
 

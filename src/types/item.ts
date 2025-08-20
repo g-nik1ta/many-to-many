@@ -1,4 +1,4 @@
-export interface ItemDetail {
+export interface FoodDetail {
     id: string;
     text: string;
 }
