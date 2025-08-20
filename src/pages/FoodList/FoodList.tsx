@@ -10,7 +10,7 @@ const FoodList = () => {
     const { fetchRandomFoods } = useFoodsApi();
 
     useEffect(() => {
-        fetchRandomFoods()
+        fetchRandomFoods();
     }, []);
 
     if (loading)
@@ -20,16 +20,14 @@ const FoodList = () => {
             </section>
         );
 
-    return (
+    return foods?.items && foods.items.length > 0 ? (
         <section className="food-list">
-            {foods?.items && foods.items.length > 0 ? (
-                foods.items.map((item) => (
-                    <FoodItem key={item.id} item={item} />
-                ))
-            ) : (
-                <p className="no-data">No data available.</p>
-            )}
+            {foods.items.map((item) => (
+                <FoodItem key={item.id} item={item} />
+            ))}
         </section>
+    ) : (
+        <p className="no-data">No data available.</p>
     );
 };
 

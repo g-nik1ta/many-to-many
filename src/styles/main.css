@@ -12,6 +12,10 @@
     height: 100vh;
 }
 
+main {
+    padding: 12px 22px;
+}
+
 .disabled {
     pointer-events: none;
     user-select: none;
