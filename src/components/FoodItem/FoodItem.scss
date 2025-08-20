@@ -1,0 +1,21 @@
+.food-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 22px;
+    border-radius: 12px;
+    min-width: 480px;
+    min-height: 64px;
+
+    .food-name {
+        font-size: 24px;
+        font-weight: 400;
+        color: #FFF;
+    }
+
+    .food-image {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+    }
+}

@@ -3,7 +3,7 @@ export interface ItemDetail {
     text: string;
 }
 
-export interface FoodItem {
+export interface Food {
     id: string;
     name: string;
     image: string | null;
@@ -12,5 +12,5 @@ export interface FoodItem {
 
 export interface FoodCategory {
     title: string;
-    items: FoodItem[];
+    items: Food[];
 }
