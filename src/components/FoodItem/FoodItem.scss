@@ -1,3 +1,14 @@
+$animation-duration-open: 1.4s;
+$animation-duration-close: .5s;
+$animation-delay-open: .15s;
+$animation-timing-function: cubic-bezier(0.55, 0.04, 0.05, 0.97);
+
+@mixin animate-item($n) {
+    transition:
+        opacity $animation-duration-open * ($n * 0.3) $animation-timing-function $animation-delay-open,
+        transform $animation-duration-open * ($n * 0.3) $animation-timing-function $animation-delay-open;
+}
+
 .food-item {
     display: flex;
     align-items: center;
@@ -6,6 +17,21 @@
     border-radius: 12px;
     min-width: 480px;
     min-height: 64px;
+    position: relative;
+
+    @for $i from 1 through 20 {
+        &:nth-of-type(#{$i}) {
+            @include animate-item($i);
+        }
+    }
+
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 
     .food-name {
         font-size: 24px;
@@ -13,9 +39,43 @@
         color: #FFF;
     }
 
+    .skeleton {
+        position: absolute;
+        right: 22px;
+        width: 100px;
+        height: 100px;
+        background: #eeeeee3c;
+        border-radius: 8px;
+        overflow: hidden;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150px;
+            width: 150px;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.4) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            animation: shimmer 1.2s infinite;
+        }
+    }
+
     .food-image {
         width: 100px;
         height: 100px;
         object-fit: contain;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(200px); // проходим по всей ширине
     }
 }
