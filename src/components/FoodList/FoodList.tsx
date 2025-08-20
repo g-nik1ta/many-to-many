@@ -1,18 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./FoodList.scss";
-import { getRandomFoods } from "../../api/items";
-import { FoodCategory } from "../../types/item";
 import ULoader from "../UComponents/ULoader/ULoader";
+import { useFood } from "../../context/FoodContext";
+import { useFoodsApi } from "../../hooks/useFoodsApi";
 
 const FoodList = () => {
-    const [foods, setFoods] = useState<FoodCategory | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
+    const { loading, foods } = useFood();
+    const { fetchRandomFoods } = useFoodsApi();
 
     useEffect(() => {
-        getRandomFoods()
-            .then(setFoods)
-            .catch(console.error)
-            .finally(() => setLoading(false));
+        fetchRandomFoods()
     }, []);
 
     if (loading)
@@ -29,7 +26,7 @@ const FoodList = () => {
                     <span key={item.id}>{item.name}</span>
                 ))
             ) : (
-                <p>No data available</p>
+                <p className="no-data">No data available</p>
             )}
         </section>
     );
